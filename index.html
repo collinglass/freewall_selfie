@@ -9,7 +9,7 @@
 		<link rel="stylesheet" type="text/css" href="css/style.css" />
 		<script type="text/javascript" src="lib/jquery.js"></script>
 		<script type="text/javascript" src="lib/freewall.js"></script>
-		
+		<script type="text/javascript" src="lib/jcrop.js"></script>
 		<style type="text/css">
 			html, body {
 				height: 100%;
@@ -74,19 +74,20 @@
 		</div>
 
 		<script type="text/javascript">
-			var temp = "<img class='brick' style='width:{width}px; height: {height}px;' src='photo1.jpg'></div>";
+			var temp = "<img class='brick' style='width:{width}%; height: {height}%;' src='photo1.jpg'>";
 			var dimW = [
-				223, 446
+				16.66, 33.34
 			];
 			var dimH = [
-				159, 318
+				25, 50
 			];
 
 
 			var w = 1, h = 1, html = '', color = '', limitItem = 28;
 			for (var i = 0; i < limitItem; ++i) {
-				h = dimH[dimH.length * Math.random() << 0];
-				w = dimW[dimW.length * Math.random() << 0];
+				var picker = dimH.length * Math.random() << 0;
+				h = dimH[picker];
+				w = dimW[picker];
 				html += temp.replace(/\{height\}/g, h).replace(/\{width\}/g, w);
 			}
 			$("#freewall").html(html);
