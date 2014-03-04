@@ -7,106 +7,13 @@
 		<script type="text/javascript" src="lib/jquery.js"></script>
 		<script type="text/javascript" src="lib/freewall.js"></script>
 
-		<style type="text/css">
-			html, body {
-				height: 100%;
-				width: 100%;
-				margin: 0;
-				padding: 0;
-			}
-			.layout {
-				position: absolute;
-				right: 0px;
-				left: 0px;
-				top: 0px;
-				bottom: 0px;
-				padding: 15px;
-				overflow: hidden;
-			}
-			.header {
-				height: 100%;
-			}
-			.free-wall {
-				width: 100%;
-				height: 100%;
-			}
+		<link rel="stylesheet" type="text/css" href="css/index.css">
 
-			@keyframes start {
-				from {
-					transform: scale(0);
-				}
-				to {
-					transform: scale(1);
-				}
-			}
-
-			@-webkit-keyframes start {
-				from {
-					-webkit-transform: scale(0);
-				}
-				to {
-					-webkit-transform: scale(1);
-				}
-			}
-
-			.free-wall .brick[data-state="init"] {
-				display: none;
-			}
-
-			.free-wall .brick[data-state="start"]  {
-				display: block;
-				animation: start 0.5s;
-				-webkit-animation: start 0.5s;
-			}
-
-			.free-wall .brick[data-state="move"]  {
-				transition: top 0.5s, left 0.5s, width 0.5s, height 0.5s;
-				-webkit-transition: top 0.5s, left 0.5s, width 0.5s, height 0.5s;
-			}
-		</style>
 	</head>
 	<body>
 		<div class="layout">
 			<div id="freewall" class="free-wall"></div>
 		</div>
-
-		<script type="text/javascript">
-			var temp = "<img class='brick' style='width:{width}%; height: {height}%;' src='img/index.jpg'>";
-			var dimW = [
-				16.66, 33.34
-			];
-			var dimH = [
-				25, 50
-			];
-
-
-			var w = 1, h = 1, html = '', color = '', limitItem = 28;
-			for (var i = 0; i < limitItem; ++i) {
-				var picker = dimH.length * Math.random() << 0;
-				h = dimH[picker];
-				w = dimW[picker];
-				html += temp.replace(/\{height\}/g, h).replace(/\{width\}/g, w);
-			}
-			$("#freewall").html(html);
-			
-
-			$(function() {
-				var wall = new freewall("#freewall");
-				wall.reset({
-					selector: '.brick',
-					animate: false,
-					cellW: 160,
-					cellH: 160,
-					gutterX: 0,
-					gutterY: 0,
-					delay: 30,
-					onResize: function() {
-						wall.refresh($(window).width() - 30, $(window).height() - 30);
-					}
-				});
-				// caculator width and height for IE7;
-				wall.fitZone($(window).width() - 30 , $(window).height() - 30);
-			});
-		</script>
+		<script type="text/javascript" src="js/index.js"></script>
 	</body>
 </html>
